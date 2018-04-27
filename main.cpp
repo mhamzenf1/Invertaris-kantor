@@ -12,7 +12,7 @@ int compare(char *str1, char *str2) {
     int len = strlen(str1);
     int beda = 0;
 
-    for (int i=1; i<len; i++) {
+    for (int i=0; i<len; i++) {
         if (str1[i] >= 'A' && str1[i] <= 'Z') str1[i] += 32;
         if (str2[i] >= 'A' && str2[i] <= 'Z') str2[i] += 32;
 
@@ -98,6 +98,8 @@ int compare(char *str1, char *str2) {
                             ;
                             PAUSE;
                             break;
+                            system("cls");
+
                         case 2:
                             if (awal != NULL){
                             cout << "Masukan posisi data : ";
@@ -117,6 +119,7 @@ int compare(char *str1, char *str2) {
                                 Psbl->next = baru;
                             }
                             }
+                            PAUSE;
                             break;
                         case 3:
                         default:
@@ -139,10 +142,10 @@ int compare(char *str1, char *str2) {
                                }
                                akhir->next= baru;
                             }
-                            PAUSE;
                             break;
                     }
                 }
+                PAUSE;
                 break;
 
         case 2:
@@ -162,7 +165,7 @@ int compare(char *str1, char *str2) {
                         p = p->next;
                     }
                 }
-                cout << "\nJudul barang dari data yang ingin dihapus : ";
+                cout << "\nMasukkan Judul barang dari data yang ingin dihapus : ";
                 cin >> cari;
                 Psbl = NULL;
                 p = awal;
@@ -209,7 +212,25 @@ int compare(char *str1, char *str2) {
                 system("cls");
                 break;
             case 3:
-                cout << "\nMasukan Kode Barang/Judul Barang yang di cari : ";
+                p = awal;
+                cout << "==========================================";
+                if (p == NULL) {
+                    cout << "\n List Kosong\n";
+                    cout << "\n------------------------------------------\n";
+                } else {
+                    while (p != NULL) {
+                        cout << "\nKode Barang   : " << p->kode_barang;
+                        cout << "\nJudul Barang  : " << p->judul_barang;
+                        cout << "\nStock         : " << p->stock;
+                        cout << "\n==========================================\n";
+                        p = p->next;
+                    }
+                }
+                cout << "\ningin cari barang? (y/n) : ";
+                cin >> &konfirmasi;
+                        if (konfirmasi == 'y' || konfirmasi == 'Y') {
+                cout << "\n";
+                cout << "\nMasukan Judul Barang yang di cari : ";
                 cin >> cari;
                 p = awal;
                 while (p != NULL) {
@@ -228,7 +249,15 @@ int compare(char *str1, char *str2) {
                     cout << "\nData tidak ditemukan ! \n\n";
                     PAUSE;
                 }
+                else {
+                    system("cls");
+                    break;
+                }
+            }
+
+                system("cls");
                 break;
+
         case 4: // tampilkan list
                 p = awal;
                 cout << "==========================================";
@@ -246,6 +275,7 @@ int compare(char *str1, char *str2) {
                 }
                 cout << "\n";
                 PAUSE;
+                system("cls");
                 break;
 
         case 5: // Edit data
@@ -265,7 +295,7 @@ int compare(char *str1, char *str2) {
                         p = p->next;
                     }
                 }
-                cout << "\nMasukan Kode barang/Judul barang dari data yang ingin diupdate : ";
+                cout << "\nMasukkan Judul barang dari data yang ingin diupdate : ";
                 cin >> cari;
                 Psbl = NULL;
                 p = awal;
@@ -371,9 +401,11 @@ int compare(char *str1, char *str2) {
                 }
 
                 if (p == NULL) {
-                    cout << "\n\nKode Barang/Judul Barang tidak ditemukan !\n\n";
+                    cout << "\n\nJudul Barang tidak ditemukan !\n\n";
                 }
+
                 PAUSE;
+                system("cls");
                 break;
 
             case 0: break;
